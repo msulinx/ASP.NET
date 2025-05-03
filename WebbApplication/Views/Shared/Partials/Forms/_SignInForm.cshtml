@@ -1,0 +1,71 @@
+@model SignInViewModel
+
+<!----Genererat av Chat GPT 4.0.
+Eftersom signin för admin och vanliga users delar formulär så används ViewData för att kunna
+koppla ihop rätt formulär till rätt controller --->
+
+@{
+    var action = ViewData["FormAction"] as string ?? "SignIn";
+    var controller = ViewData["FormController"] as string ?? "Auth";
+}
+
+<div class="auth signin">
+    <div class="card">
+        <div class="card-header">
+            <h1>Login</h1>
+        </div>
+
+        <div class="card-body">
+            <div class="externals">
+                @await Html.PartialAsync("Partials/Components/_ExternalAuthenticationPartial")
+            </div>
+
+            <div class="divider auth">
+                <span>OR</span>
+            </div>
+
+            <!----Genererat av Chat GPT 4.0.
+            En popup text om en användare med email som inte är kopplad till Admin försöker logga in --->
+
+            @if (!ViewData.ModelState.IsValid)
+            {
+                <div class="form-error-message">
+                    @foreach (var modelError in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                    {
+                        <p>@modelError.ErrorMessage</p>
+                    }
+                </div>
+            }
+
+            <form method="post" asp-controller="@controller" asp-action="@action" novalidate>
+                <div class="form-group">
+                    <label asp-for="Email" class="form-label"></label>
+                    <input asp-for="Email" class="form-input" placeholder="Your email"/>
+                    <span asp-validation-for="Email" class="form-error" data-valmsg-for="Email"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Password" class="form-label"></label>
+                    <input asp-for="Password" class="form-input" placeholder="Your password"/>
+                    <span asp-validation-for="Password" class="form-error" data-valmsg-for="Password"></span>
+                </div>
+
+                <div class="form-checkbox-group signin">
+                    <label class="checkbox-label">
+                        <input asp-for="RememberMe" type="checkbox"/>
+                        <span>Remember me</span>
+                    </label>
+                    <a href="#">Forgot password?</a>
+                </div>
+
+                <button type="submit" class="btn btn-blue btn-auth">Login</button>
+
+            </form>
+        </div>
+
+        <div class="card-footer">
+            Don't have an account?
+            <a asp-controller="Auth" asp-action="SignUp">Sign Up</a>
+        </div>
+    </div>
+</div>

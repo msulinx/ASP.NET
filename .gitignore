@@ -1,0 +1,39 @@
+# ASP.NET Core
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Environments
+appsettings.Development.json
+appsettings.json
+
+# Secrets
+secrets.json
+
+# VS Code
+.vscode/
+
+# Rider
+.idea/
+
+# Logs
+*.log
+logs/
+
+# npm & Node
+node_modules/
+wwwroot/css/main.css
+
+# Sass cache (optional)
+.sass-cache/
+
+# Build output
+dist/
+build/
+
+# OS
+.DS_Store
+Thumbs.db

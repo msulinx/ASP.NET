@@ -1,0 +1,209 @@
+.dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 120%;
+  z-index: 10;
+  background-color: var(--dropdown-background-color);
+  border: 1px solid var(--dropdown-border-color);
+  color: var(--dropdown-text-color);
+  padding: 1.2rem 1rem 1.2rem 1.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  min-width: 180px;
+
+  &.dropdown-show {
+    display: block;
+  }
+
+  .dropdown-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .dropdown-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+
+    form {
+      width: 100%;
+    }
+  }
+
+  .dropdown-action {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1rem;
+    margin-left: -0.8rem;
+    border-radius: var(--button-border-radius);
+    width: 100%;
+    color: var(--navlink-text-color);
+    background-color: var(--navlink-background-color);
+    border: 1px solid var(--navlink-border-color);
+    transition: background-color 0.1s ease-in-out, border-color 0.1s ease-in-out, color 0.1s ease-in-out;
+    cursor: pointer;
+    text-decoration: none;
+
+    &:hover {
+      background-color: var(--navlink-background-hover-color);
+      border-color: var(--navlink-border-hover-color);
+      color: var(--navlink-text-hover-color);
+    }
+
+    &.active {
+      background-color: var(--navlink-active-background-color);
+      color: var(--navlink-active-text-color);
+      border-color: var(--navlink-border-active-color);
+    }
+  }
+}
+
+// NOTIFICATIONS
+#notification-container {
+  position: relative;
+
+  .dropdown {
+    width: 100%;
+    min-width: 450px;
+  }
+
+  .notifications {
+    display: grid;
+    gap: 0.5rem;
+
+    .notification {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      grid-template-areas: "img message btn" "img time btn";
+      align-items: center;
+      column-gap: 1rem;
+      padding: 0.5rem 1rem;
+      width: 100%;
+      border: 2px solid var(--notification-border-color);
+      color: var(--notification-text-color);
+      border-radius: var(--border-radius);
+
+      &:hover {
+        background-color: var(--notification-background-hover-color);
+      }
+
+      .notification-image,
+      .project-image {
+        grid-area: img;
+
+        img,
+        & {
+          width: 48px;
+          height: 48px;
+          border-radius: 50%;
+          object-fit: cover;
+          display: block;
+        }
+
+        &.project-image {
+          border-radius: var(--border-radius);
+          height: 56px;
+          width: 56px;
+        }
+      }
+
+      .message {
+        grid-area: message;
+        color: var(--notification-text-color);
+      }
+
+      .time {
+        grid-area: time;
+        font-size: 0.9em;
+        color: var(--user-notification-text-muted-color);
+      }
+
+      .btn-remove {
+        grid-area: btn;
+      }
+    }
+  }
+}
+
+// ACCOUNT
+#account-container {
+  position: relative;
+
+  .dropdown {
+    width: 100%;
+    min-width: 350px;
+  }
+
+  .account-name {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    width: 100%;
+    border: 2px solid var(--account-name-border-color);
+    background-color: var(--account-name-background-color);
+    color: var(--account-name-text-color);
+    border-radius: var(--border-radius);
+
+    img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid var(--account-name-image-border-color);
+    }
+  }
+}
+
+// BADGE
+.badge {
+  border-radius: var(--border-radius);
+  padding: 0.25rem 0.5rem;
+  font-size: 0.9em;
+  font-weight: var(--font-medium);
+  font-style: normal;
+  font-family: var(--font-standard);
+
+  &.badge-red {
+    background-color: var(--badge-red-background-color);
+    border: 1px solid var(--badge-red-border-color);
+    color: var(--badge-red-text-color);
+  }
+}
+
+// CARD 
+.card-dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 120%;
+  z-index: 10;
+  background-color: var(--dropdown-background-color);
+  border: 1px solid var(--dropdown-border-color);
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  width: 240px;
+
+  .dropdown-action {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 1rem;
+  }
+}
+
+.project-actions-container {
+  position: relative;
+
+  .card-dropdown {
+    top: 100%;
+    right: 0;
+    z-index: 100;
+  }
+}

@@ -1,0 +1,84 @@
+@model SignUpViewModel
+
+@{
+    ViewData["Title"] = "SignUp";
+    Layout = "_CleanLayout";
+}
+
+<section id="signup-form">
+    <div class="auth signup">
+        <div class="card">
+            <div class="card-header">
+                <h1>Sign Up</h1>
+            </div>
+
+            <div class="card-body">
+                
+                <form method="post" asp-controller="Auth" asp-action="ExternalSignIn" novalidate>
+                    <input type="hidden" name="returnUrl" value="@ViewBag.ReturnUrl"/>
+                    <button class="btn btn-external" type="submit" name="provider" value="Google">
+                        <img src="/images/icons/google-icon.svg"/>
+                        <span>Sign up with Google</span>
+                    </button>
+                </form>
+
+                <div class="divider auth">
+                    <span>OR</span>
+                </div>
+
+                <form method="post" asp-action="SignUp" asp-controller="Auth" novalidate>
+                    <div class="form-group">
+                        <label asp-for="FirstName" class="form-label"></label>
+                        <input asp-for="FirstName" class="form-input" placeholder="First name"/>
+                        <span asp-validation-for="FirstName" class="form-error"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="LastName" class="form-label"></label>
+                        <input asp-for="LastName" class="form-input" placeholder="Last name"/>
+                        <span asp-validation-for="LastName" class="form-error"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Email" class="form-label"></label>
+                        <input asp-for="Email" class="form-input" placeholder="Your email"/>
+                        <span asp-validation-for="Email" class="form-error"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Password" class="form-label"></label>
+                        <input asp-for="Password" type="password" class="form-input" placeholder="Choose a password"/>
+                        <span asp-validation-for="Password" class="form-error"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="ConfirmPassword" class="form-label"></label>
+                        <input asp-for="ConfirmPassword" type="password" class="form-input" placeholder="Repeat password"/>
+                        <span asp-validation-for="ConfirmPassword" class="form-error"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Role" class="form-label"></label>
+                        <select asp-for="Role" asp-items="Model.Roles" class="form-input"></select>
+                        <span asp-validation-for="Role" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-checkbox-group signup">
+                        <label class="checkbox-label">
+                            <input asp-for="TermsAndConditions" type="checkbox"/>
+                            <span>I accept <a href="#">Terms and Conditions</a></span>
+                        </label>
+                        <span asp-validation-for="TermsAndConditions" class="form-error"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-blue btn-auth">Create Account</button>
+                </form>
+            </div>
+
+            <div class="card-footer">
+                Already have an account?
+                <a asp-controller="Auth" asp-action="SignIn">Sign In</a>
+            </div>
+        </div>
+    </div>
+</section>

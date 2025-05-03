@@ -1,0 +1,111 @@
+
+@model UpdateMemberViewModel
+
+<section id="updateMemberModal-@Model.Id" class="modal">
+    <div class="modal-card">
+        <div class="card-header">
+            <h3>Update Member</h3>
+            <button data-type="close" data-target="#updateMemberModal-@Model.Id" class="btn-close"></button>
+        </div>
+        <div class="card-body">
+            <form asp-controller="Members" asp-action="UpdateMember" asp-route-id="@Model.Id" method="post"
+                  enctype="multipart/form-data" class="modal-form" novalidate>
+                <input asp-for="Id" type="hidden"/>
+
+                <div class="form-group">
+                    <div class="upload-trigger image-preview-container member-image">
+                        <img class="image-preview" src="@Model.ImageUrl" alt="Project Image">
+                        <div class="image-preview-icon-container circle circle-gray selected">
+                            <i class="image-preview-icon fa-solid fa-pen moved"></i>
+                        </div>
+                    </div>
+                    <input type="file" class="image-upload hide" asp-for="MemberImage" accept="image/*" />
+                </div>
+
+                <div class="form-horizontal-group">
+                    <div class="form-group">
+                        <label asp-for="FirstName" class="form-label"></label>
+                        <input asp-for="FirstName" class="form-input" placeholder="First Name"/>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="LastName" class="form-label"></label>
+                        <input asp-for="LastName" class="form-input" placeholder="Last Name"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Email" class="form-label"></label>
+                    <input asp-for="Email" class="form-input" placeholder="Your email address"/>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="PhoneNumber" class="form-label"></label>
+                    <input asp-for="PhoneNumber" class="form-input" placeholder="Your phone number"/>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="JobTitle" class="form-label"></label>
+                    <input asp-for="JobTitle" class="form-input" placeholder="Your job title"/>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Address.StreetName" class="form-label"></label>
+                    <input asp-for="Address.StreetName" class="form-input" placeholder="Your street name"/>
+                </div>
+
+                <div class="form-horizontal-group">
+                    <div class="form-group">
+                        <label asp-for="Address.PostalCode" class="form-label"></label>
+                        <input asp-for="Address.PostalCode" class="form-input" placeholder="Your postal code"/>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Address.City" class="form-label"></label>
+                        <input asp-for="Address.City" class="form-input" placeholder="Your city"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Date of Birth</label>
+                    <div class="date-group">
+                        <select asp-for="Day" class="form-input">
+                            <option value="">Day</option>
+                            @for (int i = 1; i <= 31; i++)
+                            {
+                                <option value="@i" selected="@(Model.Day == i ? "selected" : null)">@i</option>
+                            }
+                        </select>
+
+                        <select asp-for="Month" class="form-input">
+                            <option value="">Month</option>
+                            @for (int i = 1; i <= 12; i++)
+                            {
+                                <option value="@i" selected="@(Model.Month == i ? "selected" : null)">
+                                    @System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(i)
+                                </option>
+                            }
+                        </select>
+
+                        <select asp-for="Year" class="form-input">
+                            <option value="">Year</option>
+                            @for (int i = DateTime.Now.Year; i >= 1950; i--)
+                            {
+                                <option value="@i" selected="@(Model.Year == i ? "selected" : null)">@i</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Role</label>
+                    <select asp-for="Role" class="form-input">
+                        <option value="">Choose a role</option>
+                        <option value="Admin" selected="@(Model.Role == "Admin" ? "selected" : null)">Admin</option>
+                        <option value="Member" selected="@(Model.Role == "Member" ? "selected" : null)">Member</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-blue btn-modal">Update Member</button>
+            </form>
+        </div>
+    </div>
+</section>

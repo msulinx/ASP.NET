@@ -1,0 +1,25 @@
+@model SignInViewModel
+
+@{
+    ViewData["Title"] = "Admin Signin";
+    ViewData["FormController"] = "Admin";
+    ViewData["FormAction"] = "AdminSignIn";
+    Layout = "_CleanLayout";
+}
+
+
+<section id="admin-signin">
+    <div class="admin-left">
+        <div class="admin-header">
+            <h1>
+                <span class="line">Welcome to</span>
+                <span class="line highlight">Admin Panel</span>
+            </h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ullamcorper nisl erat, vel convallis elit fermentum pellentesque. Sed mollis velit facilisis facilisis viverra.</p>
+        </div>
+    </div>
+
+    <div class="admin-auth">
+        @await Html.PartialAsync("Partials/Forms/_SignInForm", Model)
+    </div> 
+</section>

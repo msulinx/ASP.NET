@@ -1,0 +1,29 @@
+<section class="logotype">
+    <a href="@Url.Content("~")">
+        <img src="/images/icons/alpha-logotype.svg" alt="Alpha Logotype">
+        <span>alpha</span>
+    </a>
+</section>
+
+<nav class="nav-links">
+    <a asp-controller="Dashboard" asp-action="Index" class="nav-link">
+        <i class="fa-solid fa-house"></i>
+        <span>Dashboard</span>
+    </a>
+    <a asp-controller="Projects" asp-action="Index" class="nav-link">
+        <i class="fa-duotone fa-solid fa-briefcase"></i>
+        <span>Projects</span>
+    </a>
+    <a asp-controller="Members" asp-action="Index" class="nav-link">
+        <i class="fa-duotone fa-solid fa-user-group"></i>
+        <span>Members</span>
+    </a>
+
+    @if (User.IsInRole("Admin"))
+    {
+        <a asp-controller="AdminSettings" asp-action="Index" class="nav-link">
+            <i class="fa-solid fa-gears"></i>
+            <span>Settings</span>
+        </a>
+    }
+</nav>

@@ -1,0 +1,22 @@
+@model UpdateStatusViewModel
+
+<section id="updateStatusModal-@Model.Id" class="modal">
+    <div class="modal-card">
+        <div class="card-header modal-header">
+            <h3>Update Status</h3>
+            <button data-type="close" data-target="#updateStatusModal-@Model.Id" class="btn-close"></button>
+        </div>
+        <div class="card-body">
+            <form class="modal-form" asp-action="UpdateStatus" method="post" enctype="multipart/form-data">
+                <input asp-for="Id" type="hidden"></input>
+
+                <div class="form-group">
+                    <label asp-for="StatusName" class="form-label"></label>
+                    <input asp-for="StatusName" class="form-input" placeholder="Client name" />
+                </div>
+                
+                <button type="submit" class="btn btn-blue btn-modal">Save</button>
+            </form>
+        </div>
+    </div>
+</section>

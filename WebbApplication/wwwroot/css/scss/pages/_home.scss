@@ -1,0 +1,45 @@
+.home-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.home-header {
+  padding: 3em 25rem;
+}
+
+#home-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+
+  .heading {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    span {
+      font-size: 1.6rem;
+      font-weight: var(--font-semibold);
+    }
+  }
+}
+
+.auth-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  height: 100%;
+  width: 30%;
+  
+  i {
+    margin-right: 0.5rem;
+  }
+}
+
+#dashboard {
+  h3 {
+    padding: 2rem;
+  }
+}

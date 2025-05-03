@@ -1,0 +1,35 @@
+@model ClientViewModel
+
+<tr>
+    <td class="settings-name">
+        <div class="client-name">@Model.ClientName</div>
+    </td>
+
+    <td class="settings-info">
+        @Model.Email
+    </td>
+
+    <td class="settings-action">
+        <div id="client-actions-container-@Model.Id" class="settings-dropdown-wrapper">
+            <button class="btn-actions" data-type="dropdown" data-target="#client-dropdown-@Model.Id">
+                <i class="fa-duotone fa-ellipsis"></i>
+            </button>
+
+            <div id="client-dropdown-@Model.Id" class="dropdown card-dropdown">
+                <div class="dropdown-body">
+                    <a class="dropdown-action" data-type="modal" data-target="#updateClientModal-@Model.Id" data-id="@Model.Id">
+                        <i class="fa-duotone fa-pen-to-square"></i>
+                        <span>Edit</span>
+                    </a>
+                    <div class="divider card-divider"></div>
+                    <form asp-action="DeleteClient" asp-route-id="@Model.Id" method="post">
+                        <button type="submit" class="dropdown-action">
+                            <i class="fa-duotone fa-trash"></i>
+                            <span>Delete</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </td>
+</tr>

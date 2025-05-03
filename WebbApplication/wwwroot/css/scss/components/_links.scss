@@ -1,0 +1,74 @@
+// GENERAL LINKS
+a {
+  color: var(--link-color);
+  text-decoration: none;
+  font-size: 1em;
+  font-weight: 400;
+  font-style: normal;
+  font-family: var(--font-standard);
+  transition: color 0.1s ease-in-out;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// SIDEBAR
+
+.logotype {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 26px;
+  font-weight: var(--font-semibold);
+  font-family: var(--font-logo);
+
+  a {
+    color: var(--text-color);
+    font-size: 26px;
+    font-family: var(--font-logo);
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.nav-links {
+  display: grid;
+  gap: .5rem;
+  margin-top: 1.6rem;
+
+  .nav-link {
+    color: var(--navlink-text-color);
+    background-color: var(--navlink-background-color);
+    border: 1px solid var(--navlink-border-color);
+    padding: 1rem 1.5rem;
+    border-radius: var(--button-border-radius);
+    transition: background-color 0.1s ease-in-out, border-color 0.1s ease-in-out, color 0.1s ease-in-out;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    i {
+      margin-right: .5rem;
+    }
+
+
+    &:hover {
+      background-color: var(--navlink-background-hover-color);
+      border: 1px solid var(--navlink-border-hover-color);
+      color: var(--navlink-text-hover-color);
+      text-decoration: none;
+    }
+
+    &.active {
+      background-color: var(--navlink-active-background-color);
+      color: var(--navlink-active-text-color);
+      border: 1px solid var(--navlink-border-active-color);
+      text-decoration: none;
+    }
+  }
+
+}

@@ -1,0 +1,113 @@
+@model AddMemberViewModel
+
+<section id="addMemberModal" class="modal">
+    <div class="modal-card">
+        <div class="card-header modal-header">
+            <h3>Add Member</h3>
+            <button data-type="close" data-target="#addMemberModal" class="btn-close"></button>
+        </div>
+        <div class="card-body">
+            <form class="modal-form" asp-action="AddMember" method="post" enctype="multipart/form-data">
+
+                <div class="form-group">
+                    <div class="upload-trigger image-preview-container member-image">
+                        <img class="image-preview hide"/>
+                        <div class="image-preview-icon-container circle circle-gray">
+                            <i class="image-preview-icon fa-duotone fa-solid fa-camera"></i>
+                        </div>
+                    </div>
+                    <input type="file" class="image-upload hide" asp-for="MemberImage" accept="image/*" />
+                </div>
+
+                <div class="form-horizontal-group">
+                    <div class="form-group">
+                        <label asp-for="FirstName" class="form-label"></label>
+                        <input asp-for="FirstName" class="form-input" placeholder="First Name" />
+                        <span class="text-danger" data-valmsg-for="FirstName"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="LastName" class="form-label"></label>
+                        <input asp-for="LastName" class="form-input" placeholder="Last Name" />
+                        <span class="text-danger" data-valmsg-for="LastName"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Email" class="form-label"></label>
+                    <input asp-for="Email" class="form-input" placeholder="Your email address" />
+                    <span class="text-danger" data-valmsg-for="Email"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="PhoneNumber" class="form-label"></label>
+                    <input asp-for="PhoneNumber" class="form-input" placeholder="Your phone number" />
+                    <span class="text-danger" data-valmsg-for="PhoneNumber"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="JobTitle" class="form-label"></label>
+                    <input asp-for="JobTitle" class="form-input" placeholder="Your job title" />
+                    <span class="text-danger" data-valmsg-for="JobTitle"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Address.StreetName" class="form-label"></label>
+                    <input asp-for="Address.StreetName" class="form-input" placeholder="Your street name" />
+                    <span class="text-danger" data-valmsg-for="Address.StreetName"></span>
+                </div>
+
+                <div class="form-horizontal-group">
+                    <div class="form-group">
+                        <label asp-for="Address.PostalCode" class="form-label"></label>
+                        <input asp-for="Address.PostalCode" class="form-input" placeholder="Postal code" />
+                        <span class="text-danger" data-valmsg-for="Address.PostalCode"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Address.City" class="form-label"></label>
+                        <input asp-for="Address.City" class="form-input" placeholder="City" />
+                        <span class="text-danger" data-valmsg-for="Address.City"></span>
+                    </div>
+                </div>
+
+                <!-- Datum genererade av Chat GPT 4.0 för att få dagar, månad i text och år till 1950.
+                Finns också i  -->
+                <div class="form-group">
+                    <label class="form-label">Date of Birth</label>
+                    <div class="date-group">
+                        <select asp-for="Day" class="form-input">
+                            <option value="">Day</option>
+                            @for (int i = 1; i <= 31; i++)
+                            {
+                                <option value="@i">@i</option>
+                            }
+                        </select>
+                        <select asp-for="Month" class="form-input">
+                            <option value="">Month</option>
+                            @for (int i = 1; i <= 12; i++)
+                            {
+                                <option value="@i">@System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(i)</option>
+                            }
+                        </select>
+                        <select asp-for="Year" class="form-input">
+                            <option value="">Year</option>
+                            @for (int i = DateTime.Now.Year; i >= 1950; i--)
+                            {
+                                <option value="@i">@i</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Role" class="form-label">Role</label>
+                    <select asp-for="Role" asp-items="Model.Roles" class="form-input">
+                        <option value="">-- Select a Role --</option>
+                    </select>
+                    <span class="text-danger" data-valmsg-for="Role"></span>
+                </div>
+
+                <button type="submit" class="btn btn-blue btn-modal">Add Member</button>
+            </form>
+        </div>
+    </div>
+</section>

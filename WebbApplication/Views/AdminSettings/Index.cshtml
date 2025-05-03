@@ -1,0 +1,99 @@
+@model AdminSettingsViewModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_PortalLayout";
+}
+
+<!------ STATUSES --->
+
+<section id="statuses">
+<div class="settings-header">
+    <h1>Statuses</h1>
+    <button type="button" class="btn btn-blue btn-add" data-type="modal" data-target="#addStatusModal">
+        <i class="fa-duotone sa-solid fa-plus"></i>
+        <span>Add Status</span>
+    </button>
+</div>
+
+    <div id="status-list" class="settings-list">
+        <table>
+            <thead>
+            <tr>
+                <th class="settings-name">Status</th>
+                <th class="settings-info">Projects</th>
+                <th class="settings-action">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            @if (Model.Statuses != null && Model.Statuses.Any())
+            {
+                foreach (var status in Model.Statuses)
+                {
+                    @await Html.PartialAsync("Partials/Lists/_StatusListPartial", status)
+                }
+            }
+            </tbody>
+        </table>
+    </div>
+</section>
+
+@await Html.PartialAsync("Partials/Modals/_AddStatusModal", Model.AddStatusFormData)
+
+@if (Model.Statuses != null && Model.Statuses.Any())
+{
+    foreach (var status in Model.Statuses)
+    {
+        @await Html.PartialAsync("Partials/Modals/_UpdateStatusModal", new UpdateStatusViewModel
+        {
+            Id = status.Id,
+            StatusName = status.StatusName
+        })
+    }
+}
+<!------ CLIENTS --->
+
+<section id="clients">
+    <div class="settings-header">
+        <h1>Clients</h1>
+        <button type="button" class="btn btn-blue btn-add" data-type="modal" data-target="#addClientModal">
+            <i class="fa-duotone sa-solid fa-plus"></i>
+            <span>Add Client</span>
+        </button>
+    </div>
+
+    <div id="clients-list" class="settings-list">
+        <table>
+            <thead>
+            <tr>
+                <th class="settings-name">Client Name</th>
+                <th class="settings-info">Email</th>
+                <th class="settings-action">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            @if (Model.Clients != null && Model.Clients.Any())
+            {
+                foreach (var client in Model.Clients)
+                {
+                    @await Html.PartialAsync("Partials/Lists/_ClientsListPartial", client)
+                }
+            }
+            </tbody>
+        </table>
+    </div>
+</section>
+@await Html.PartialAsync("Partials/Modals/_AddClientModal", Model.AddClientFormData)
+
+@if (Model.Clients != null && Model.Clients.Any())
+{
+    foreach (var client in Model.Clients)
+    {
+        @await Html.PartialAsync("Partials/Modals/_UpdateClientModal", new UpdateClientViewModel
+        {
+            Id = client.Id,
+            ClientName = client.ClientName,
+            Email = client.Email
+        })
+    }
+}

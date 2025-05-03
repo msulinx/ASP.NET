@@ -1,0 +1,120 @@
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model AddProjectViewModel
+
+<section id="addProjectModal" class="modal project-modal">
+    <div class="modal-card">
+        <div class="card-header modal-header">
+            <h3>Add Project</h3>
+            <button data-type="close" data-target="#addProjectModal" class="btn-close"></button>
+        </div>
+        <div class="card-body">
+            <form class="modal-form" asp-action="AddProject" method="post" enctype="multipart/form-data" novalidate>
+                
+                <div class="form-group">
+                    <div class="upload-trigger image-preview-container member-image">
+                        <img class="image-preview hide"/>
+                        <div class="image-preview-icon-container circle circle-gray">
+                            <i class="fa-duotone fa-solid fa-camera"></i>
+                        </div>
+                    </div>
+                    <input type="file" class="image-upload hide" asp-for="ProjectImage" accept="image/*" />
+                </div>
+                
+                <div class="form-group">
+                    <label asp-for="ProjectName" class="form-label"></label>
+                    <input asp-for="ProjectName" class="form-input" placeholder="Project name" />
+                    <span asp-validation-for="ProjectName" class="text-danger"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Clients</label>
+                    <div class="form-select" data-placeholder="Choose a client">
+                        <button type="button" class="form-select-trigger">
+                            <span class="form-select-text">Choose a client</span>
+                        </button>
+
+                        <ul class="form-select-options">
+                            @foreach (var client in Model.Clients)
+                            {
+                                <li class="form-select-option" data-value="@client.Value">
+                                    @client.Text
+                                </li>
+                            }
+                        </ul>
+
+                        <input type="hidden" asp-for="SelectedClientId" data-val="true" />
+                        <span asp-validation-for="SelectedClientId" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="RichTextContent" class="form-label">Description</label>
+                    <div class="wysiwyg">
+                        <textarea asp-for="RichTextContent" id="RichTextContent"></textarea>
+                        <div id="project-wysiwyg-editor" class="wysiwyg-editor"></div>
+                        <div id="project-wysiwyg-toolbar" class="wysiwyg-toolbar">
+                            <span class="ql-formats">
+                                <button class="ql-bold"></button>
+                                <button class="ql-italic"></button>
+                                <button class="ql-underline"></button>
+                            </span>
+                            <span class="ql-formats">
+                                <button class="ql-align" value=""></button>
+                                <button class="ql-align" value="center"></button>
+                                <button class="ql-align" value="right"></button>
+                            </span>
+                            <span class="ql-formats">
+                                <button class="ql-list" value="bullet"></button>
+                                <button class="ql-list" value="ordered"></button>
+                            </span>
+                            <span class="ql-formats">
+                                <button class="ql-link"></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-horizontal-group">
+                    <div class="form-group">
+                        <label asp-for="StartDate" class="form-label">Start Date</label>
+                        <input asp-for="StartDate" type="date" class="form-input" />
+                        <span asp-validation-for="StartDate" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="EndDate" class="form-label">End Date</label>
+                        <input asp-for="EndDate" type="date" class="form-input" />
+                        <span asp-validation-for="EndDate" class="text-danger"></span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Project Owner</label>
+                    <div class="form-input form-tag-select"
+                         id="tags-add">
+                        <input type="text" class="form-tag-input" placeholder="Choose Project Owner" />
+                        <label class="fa-solid fa-ellipsis"></label>
+                        <div class="search-results"></div>
+
+                        @foreach (var userId in Model.SelectedUserIds)
+                        {
+                            <input type="hidden" name="SelectedUserIds" value="@userId" />
+                        }
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label asp-for="Budget" class="form-label">Budget</label>
+                    <div class="form-input-extended">
+                        <i class="fa-duotone fa-solid fa-dollar-sign"></i>
+                        <input asp-for="Budget" type="number" class="form-input" step="0.01" placeholder="0" />
+                    </div>
+                    <span asp-validation-for="Budget" class="text-danger"></span>
+                </div>
+                
+                <button type="submit" class="btn btn-blue btn-modal">Create</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<script type="module" src="/js/features/projectmodal.js"></script>

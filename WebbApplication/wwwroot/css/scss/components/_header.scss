@@ -1,0 +1,34 @@
+#header-topbar {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 3rem;
+  padding: 1.5rem 2rem;
+}
+
+// MEMBERS
+
+#members {
+  padding: 1rem;
+
+  .members-header {
+    display: flex;
+    justify-content: space-between;
+    background: none;
+  }
+}
+
+// CLIENTS
+
+#clients,
+#statuses {
+  padding: 1rem;
+
+  .settings-header {
+    display: flex;
+    justify-content: space-between;
+    background: none;
+  }
+}
+
+ 

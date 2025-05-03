@@ -1,0 +1,12 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  font-size: 16px;
+  font-family: var(--font-standard);
+  font-style: normal;
+  color: var(--text-color);
+  background-color: var(--background-color);
+}

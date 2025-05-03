@@ -1,0 +1,12 @@
+@model SignInViewModel
+
+@{
+    ViewData["Title"] = "SignIn";
+    ViewData["FormController"] = "Auth";
+    ViewData["FormAction"] = "SignIn";
+    Layout = "_CleanLayout";
+}
+
+<section id="signin-form">
+    @await Html.PartialAsync("Partials/Forms/_SignInForm", Model)
+</section>

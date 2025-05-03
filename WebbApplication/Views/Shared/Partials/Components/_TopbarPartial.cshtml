@@ -1,0 +1,13 @@
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+
+<header id="header-topbar">
+
+    <form class="search-form" method="get" asp-controller="" asp-action="" novalidate>
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="search" class="form-search-input" placeholder="Search anything..."/>
+    </form>
+    
+    @await Html.PartialAsync("Partials/Dropdowns/_NotificationDropdown")
+    @await Html.PartialAsync("Partials/Dropdowns/_AccountDropdown")
+
+</header>

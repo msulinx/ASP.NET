@@ -1,0 +1,91 @@
+.settings-list {
+  background-color: var(--card-background-color); 
+  border-radius: 1rem;
+  box-shadow: var(--box-shadow);
+  padding: 1.5rem;
+  overflow: visible;
+  margin-top: 1rem;
+}
+
+.settings-list table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: visible;
+  position: relative;
+}
+
+.settings-list thead {
+  color: var(--text-color);
+
+}
+
+.settings-list thead th {
+  padding: 1rem;
+  font-weight: 600;
+  font-size: 1rem;
+  text-align: left;
+  background-color: var(--table-header-background-color);
+
+}
+
+.settings-list thead th:first-child {
+  border-top-left-radius: 1rem;
+}
+
+.settings-list thead th:last-child {
+  border-top-right-radius: 1rem;
+}
+
+.settings-list tbody tr {
+  background-color: var(--table-background-color);
+  border-top: 1px solid #eee;
+}
+
+.settings-list td {
+  padding: 1rem;
+  vertical-align: middle;
+}
+
+.settings-list tbody tr:hover {
+  background-color: var(--table-hover-color);
+}
+
+
+#statuses th.settings-action {
+  width: 15%;
+}
+
+#statuses th.settings-name {
+  width: 40%;
+}
+
+.settings-name {
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.settings-action {
+  position: relative;
+  .settings-dropdown-wrapper {
+    position: relative;
+  }
+
+  .card-dropdown {
+    top: 110%;
+    right: 50%;
+    position: absolute;
+    display: none;
+    min-width: 200px;
+    z-index: 1000;
+    background-color: var(--dropdown-background-color);
+    border: 1px solid var(--dropdown-border-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 1rem;
+  }
+
+  .card-dropdown.dropdown-show {
+    display: block;
+  }
+}

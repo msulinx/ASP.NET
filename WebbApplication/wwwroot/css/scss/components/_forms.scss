@@ -1,0 +1,99 @@
+form {
+  width: 100%;
+  text-align: left;
+
+  .field-validation-error {
+    position: absolute;
+    z-index: 1;
+    top: 38%;
+    right: 4%;
+    font-size: 0.8rem;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    padding: 0.6rem 1rem;
+    text-align: right;
+    border-radius: var(--border-radius);
+    background-color: var(--form-error-message-background-color);
+    color: var(--form-error-message-text-color);
+    border: 1px solid var(--red-semilight);
+  }
+}
+
+.form-group {
+  display: grid;
+  gap: 0.3rem;
+  padding: 0 1rem 1rem 0;
+  position: relative;
+}
+
+.form-label {
+  font-family: var(--font-standard);
+  font-size: 1em;
+  font-weight: 600;
+  font-style: normal;
+  color: var(--form-label-text-color);
+}
+
+.form-input,
+.form-search-input {
+  position: relative;
+  resize: none;
+  width: 100%;
+  font-size: 1em;
+  font-weight: 400;
+  font-style: normal;
+  font-family: var(--font-standard), sans-serif;
+  padding: 0.8rem 1rem;
+  outline: none;
+  transition: background-color 0.1s ease-in-out, border-color 0.1s ease-in-out, color 0.1s ease-in-out;
+}
+
+// FORM INPUT
+.form-input {
+  color: var(--form-input-text-color);
+  background-color: var(--form-input-background-color);
+  border: 1px solid var(--form-input-border-color);
+  border-radius: var(--form-border-radius);
+
+  &:focus {
+    border-color: var(--form-input-border-focus-color);
+  }
+
+  &::placeholder {
+    color: var(--form-input-placeholder-color);
+  }
+}
+
+// SEARCH INPUT
+.search-form {
+  display: flex;
+  align-items: center;
+  width: 30%;
+}
+
+.form-search-input {
+  color: var(--form-search-input-text-color);
+  background-color: var(--form-search-input-background-color);
+  border: 1px solid var(--form-search-input-border-color);
+
+  &:focus {
+    border-bottom: 1px solid var(--form-search-input-border-focus-color);
+  }
+
+  &::placeholder {
+    color: var(--form-search-input-placeholder-color);
+    font-size: 0.9em;
+  }
+}
+
+.form-horizontal-group {
+  display: flex;
+  width: 100%;
+  gap: 1rem;
+  position: relative;
+
+  .form-group {
+    flex: 1;
+  }
+}

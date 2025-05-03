@@ -1,0 +1,19 @@
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.divider.account-divider,
+.divider.notification-divider {
+  border: 0.1px solid var(--divider-color);
+  width: 100%;
+}
+
+.divider.notification-divider {
+  margin: 1rem 0;
+}
+
+.divider.card-divider {
+  border-top: 1px solid var(--gray-400);
+}

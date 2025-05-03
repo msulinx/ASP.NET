@@ -1,0 +1,26 @@
+@using WebbApplication.Models
+
+<!----- CHAT GPT -->
+@{
+   var projects = Model.Projects as List<ProjectViewModel>;
+
+   var countAll = projects.Count;
+   var countStarted = projects.Count(p => p.Status?.ToLower() == "started");
+   var countCompleted = projects.Count(p => p.Status?.ToLower() == "completed");
+   var selectedStatus = ViewBag.SelectedStatus as string ?? "all";
+}
+
+<a asp-controller="Projects" asp-action="Index" asp-route-status="all"
+   class="@(selectedStatus == "all" ? "active" : "")">
+   ALL [@countAll]
+</a>
+
+<a asp-controller="Projects" asp-action="Index" asp-route-status="started"
+   class="@(selectedStatus == "started" ? "active" : "")">
+   STARTED [@countStarted]
+</a>
+
+<a asp-controller="Projects" asp-action="Index" asp-route-status="completed"
+   class="@(selectedStatus == "completed" ? "active" : "")">
+   COMPLETED [@countCompleted]
+</a>

@@ -1,0 +1,77 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <RootNamespace>WebbApplication</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="JacobDixon.AspNetCore.LiveSassCompile" Version="0.1.19-alpha0000" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="9.0.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.Negotiate" Version="9.0.0"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.4"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.4">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Business\Business.csproj"/>
+        <ProjectReference Include="..\Data\Data.csproj"/>
+        <ProjectReference Include="..\Domain\Domain.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <_ContentIncludedByDefault Remove="wwwroot\css\scss\base\_base.scss"/>
+        <_ContentIncludedByDefault Remove="wwwroot\css\scss\base\_structure.scss"/>
+        <_ContentIncludedByDefault Remove="wwwroot\css\scss\base\_typography.scss"/>
+        <_ContentIncludedByDefault Remove="wwwroot\css\scss\base\_variables.scss"/>
+        <_ContentIncludedByDefault Remove="wwwroot\css\scss\components\_buttons.scss"/>
+        <_ContentIncludedByDefault Remove="wwwroot\css\scss\components\_cards.scss"/>
+        <_ContentIncludedByDefault Remove="wwwroot\css\scss\components\_dividers.scss"/>
+        <_ContentIncludedByDefault Remove="wwwroot\css\scss\components\_dropdowns.scss"/>
+        <_ContentIncludedByDefault Remove="wwwroot\css\scss\components\_forms.scss"/>
+        <_ContentIncludedByDefault Remove="wwwroot\css\scss\components\_links.scss"/>
+        <_ContentIncludedByDefault Remove="wwwroot\css\scss\components\_modals.scss"/>
+        <_ContentIncludedByDefault Remove="wwwroot\css\scss\layout\_header.scss"/>
+        <_ContentIncludedByDefault Remove="wwwroot\css\scss\layout\_sidebar.scss"/>
+        <_ContentIncludedByDefault Remove="wwwroot\css\scss\layout\_topbar.scss"/>
+        <_ContentIncludedByDefault Remove="wwwroot\css\scss\main.scss"/>
+        <_ContentIncludedByDefault Remove="wwwroot\css\scss\pages\_auth.scss"/>
+        <_ContentIncludedByDefault Remove="wwwroot\css\scss\pages\_members.scss"/>
+        <_ContentIncludedByDefault Remove="wwwroot\css\scss\pages\_projects.scss"/>
+        <_ContentIncludedByDefault Remove="Home\Home\Index.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\HomeCopy\Index.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Clients\Index.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Status\Index.cshtml" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="wwwroot\css\scss\base\_base.scss" />
+      <None Include="wwwroot\css\scss\base\_structure.scss" />
+      <None Include="wwwroot\css\scss\base\_typography.scss" />
+      <None Include="wwwroot\css\scss\base\_variables.scss" />
+      <None Include="wwwroot\css\scss\components\_buttons.scss" />
+      <None Include="wwwroot\css\scss\components\_darkmode.scss" />
+      <None Include="wwwroot\css\scss\components\_dividers.scss" />
+      <None Include="wwwroot\css\scss\components\_dropdowns.scss" />
+      <None Include="wwwroot\css\scss\components\_forms.scss" />
+      <None Include="wwwroot\css\scss\components\_links.scss" />
+      <None Include="wwwroot\css\scss\components\_modals.scss" />
+      <None Include="wwwroot\css\scss\components\_uploads.scss" />
+      <None Include="wwwroot\css\scss\main.scss" />
+      <None Include="wwwroot\css\scss\pages\_auth.scss" />
+      <None Include="wwwroot\css\scss\pages\_home.scss" />
+      <None Include="wwwroot\css\scss\pages\_members.scss" />
+      <None Include="wwwroot\css\scss\pages\_projects.scss" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="wwwroot\images\backgrounds\" />
+      <Folder Include="wwwroot\uploads\members\" />
+    </ItemGroup>
+
+</Project>

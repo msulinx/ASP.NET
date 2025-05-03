@@ -1,0 +1,27 @@
+
+// PORTAL LAYOUT
+.portal {
+  display: grid;
+  grid-template-columns: minmax(50px, 270px) 1fr;
+  grid-template-rows: minmax(80px, auto) 1fr;
+  grid-template-areas: "side top" "side main";
+  height: 100dvh;
+
+  .sidebar {
+    grid-area: side;
+    border-right: 1px solid var(--border-color);
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+    gap: 2rem;
+    padding: 1.5rem 2rem;
+  }
+
+  .topbar {
+    grid-area: top;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .main {
+    grid-area: main;
+  }
+}

@@ -1,0 +1,27 @@
+@model UpdateClientViewModel
+
+<section id="updateClientModal-@Model.Id" class="modal">
+    <div class="modal-card">
+        <div class="card-header modal-header">
+            <h3>Update Client</h3>
+            <button data-type="close" data-target="#updateClientModal-@Model.Id" class="btn-close"></button>
+        </div>
+        <div class="card-body">
+            <form class="modal-form" asp-action="UpdateClient" method="post" enctype="multipart/form-data">
+                <input asp-for="Id" type="hidden"></input>
+
+                <div class="form-group">
+                    <label asp-for="ClientName" class="form-label"></label>
+                    <input asp-for="ClientName" class="form-input" placeholder="Client name" />
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Email" class="form-label"></label>
+                    <input asp-for="Email" class="form-input" placeholder="Your email address" />
+                </div>
+
+                <button type="submit" class="btn btn-blue btn-modal">Save</button>
+            </form>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,21 @@
+@model AddStatusViewModel
+
+<section id="addStatusModal" class="modal">
+    <div class="modal-card">
+        <div class="card-header modal-header">
+            <h3>Add Status</h3>
+            <button data-type="close" data-target="#addStatusModal" class="btn-close"></button>
+        </div>
+        <div class="card-body">
+            <form class="modal-form" asp-action="AddStatus" method="post" enctype="multipart/form-data">
+
+                <div class="form-group">
+                    <label asp-for="StatusName" class="form-label"></label>
+                    <input asp-for="StatusName" class="form-input" placeholder="Status Name" />
+                </div>
+                
+                <button type="submit" class="btn btn-blue btn-modal">Add Status</button>
+            </form>
+        </div>
+    </div>
+</section>

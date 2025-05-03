@@ -1,0 +1,37 @@
+@model MemberViewModel
+
+<div class="member card">
+    <div class="card-header">
+        <div id="member-actions-container-@Model.Id">
+            <button class="btn-actions" data-type="dropdown" data-target="#member-dropdown-@Model.Id">
+                <i class="fa-duotone fa-solid fa-ellipsis"></i>
+            </button>
+                
+            <div id="member-dropdown-@Model.Id" class="dropdown card-dropdown">
+                <div class="dropdown-body">
+                    <a class="dropdown-action" data-type="modal" data-target="#updateMemberModal-@Model.Id" data-id="@Model.Id">
+                        <i class="fa-duotone fa-solid fa-pen-to-square"></i>
+                        <span>Edit</span>
+                    </a>
+                    <div class="divider card-divider"></div>
+                    <form asp-action="DeleteMember" asp-route-id="@Model.Id" method="post" style="display:inline;" asp-route-pageSize="@Model.PageSize">
+                        <button type="submit" class="dropdown-action">
+                            <i class="fa-duotone fa-solid fa-trash delete"></i>
+                            <span>Delete</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="member-image">
+        <img src="@Model.ImageUrl" alt="Member Avatar">
+    </div>
+    <h6 class="name">@Model.FirstName @Model.LastName</h6>
+    <span class="title">@Model.JobTitle</span>
+    <span class="email">@Model.Email</span>
+    <span class="phone">@Model.PhoneNumber</span>
+    <button class="btn btn-message">Message</button>
+</div>
+

@@ -1,0 +1,67 @@
+@model ProjectViewModel
+@using WebbApplication.Helpers
+
+  <div class="project card">
+    <div class="card-header">
+      
+      <div class="project-header-left">
+        <div class="project-image">
+          <img src="@Model.ImageUrl" alt="">
+        </div>
+        <div class="project-info">
+          <h6 class="project-name">@Model.ProjectName</h6>
+          <span class="client-name">@Model.ClientName</span>
+        </div>
+      </div>
+
+      <div id="project-actions-container-@Model.Id" class="project-actions-container">
+        <button class="btn-actions" data-type="dropdown" data-target="#project-dropdown-@Model.Id">
+          <i class="fa-duotone fa-solid fa-ellipsis"></i>
+        </button>
+
+        <div id="project-dropdown-@Model.Id" class="dropdown card-dropdown">
+          <div class="dropdown-body">
+            
+            <a class="dropdown-action" data-type="modal" data-target="#updateProjectModal-@Model.Id" data-id="@Model.Id">
+              <i class="fa-duotone fa-solid fa-pen-to-square"></i>
+              <span>Edit</span>
+            </a>
+
+            <a class="dropdown-action" data-type="modal" data-target="#addMemberToProjectModal-@Model.Id" data-id="@Model.Id">
+              <i class="fa-duotone fa-solid fa-pen-to-square"></i>
+              <span>Add Member</span>
+            </a>
+            
+            <div class="divider card-divider"></div>
+            
+            <form asp-action="DeleteProject" asp-route-id="@Model.Id" method="post" style="display:inline;" asp-route-pageSize="@Model.PageSize">
+              <button type="submit" class="dropdown-action">
+                <i class="fa-duotone fa-solid fa-trash delete"></i>
+                <span>Delete</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+      
+      
+    </div>
+    <div class="card-body">
+      <div class="project-description">@Html.Raw(Model.Description)</div>
+    </div>
+
+    <div class="card-footer">
+      <div class="project-status @(Model.IsDueSoon ? "due-soon" : "")">
+        <i class="fa-solid fa-clock"></i>
+        <span>@Model.EndDate.ToTimeLeft()</span>
+      </div>
+
+      <div class="project-members">
+        @foreach (var member in Model.Members)
+        {
+          <img class="member-avatar" src="@member.ImageUrl" alt="Member Avatar">
+        }
+      </div>
+    </div>
+  </div>

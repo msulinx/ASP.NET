@@ -1,0 +1,36 @@
+@model StatusViewModel
+
+<tr>
+    <td class="settings-name">
+        <div class="name">@Model.StatusName</div>
+    </td>
+
+    <td class="settings-info">@Model.ProjectCount</td>
+    <td class="settings-action">
+
+        <div id="status-actions-container-@Model.Id">
+            <button class="btn-actions" data-type="dropdown" data-target="#status-dropdown-@Model.Id">
+                <i class="fa-duotone fa-solid fa-ellipsis"></i>
+            </button>
+
+            <div id="status-dropdown-@Model.Id" class="dropdown card-dropdown">
+                <div class="dropdown-body">
+                    <a class="dropdown-action" data-type="modal" data-target="#updateStatusModal-@Model.Id" data-id="@Model.Id">
+                        <i class="fa-duotone fa-solid fa-pen-to-square"></i>
+                        <span>Edit</span>
+                    </a>
+                    <div class="divider card-divider"></div>
+                    <form asp-action="DeleteStatus" asp-route-id="@Model.Id" method="post" style="display:inline;">
+                        <button type="submit" class="dropdown-action">
+                            <i class="fa-duotone fa-solid fa-trash delete"></i>
+                            <span>Delete</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        
+    </td>
+</tr>
+

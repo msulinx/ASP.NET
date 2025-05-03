@@ -1,0 +1,32 @@
+@{
+    Layout = "_CleanLayout";
+    ViewData["Title"] = "Home";
+}
+
+<section id="home">
+    <div class="home-page">
+        <div class="home-header">
+            <h3>Home</h3>
+        </div>
+        <div id="home-header">
+            <div class="heading">
+                <img src="images/icons/alpha-logotype.svg"/>
+                <span>Welcome to Alpha Portal</span>
+            </div>
+            <div class="auth-buttons">
+                <a asp-controller="Auth" asp-action="SignUp" class="btn btn-blue btn-auth">
+                    <i class="fa-solid fa-plus"></i>
+                    <span>Sign Up</span>
+                </a>
+                <a asp-controller="Auth" asp-action="SignIn" class="btn btn-blue btn-auth">
+                    <i class="fa-solid fa-user-group"></i>
+                    <span>Sign In</span>
+                </a>
+                <a asp-controller="Admin" asp-action="AdminSignIn" class="btn btn-blue btn-auth">
+                    <i class="fa-solid fa-lock"></i>
+                    <span>Admin</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

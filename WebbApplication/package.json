@@ -1,0 +1,16 @@
+{
+  "name": "webbapplication",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "sass:watch": "sass wwwroot/css/scss/main.scss wwwroot/css/main.css --watch",
+    "dotnet:watch": "dotnet watch run --project WebbApplication.csproj",
+    "dev": "concurrently \"npm run sass:watch\" \"npm run dotnet:watch\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.0.0",
+    "sass": "^1.65.1"
+  },
+  "private": true
+}
